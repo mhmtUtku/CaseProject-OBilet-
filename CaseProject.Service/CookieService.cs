@@ -19,7 +19,7 @@ namespace CaseProject.Service
         public void CookieCreate(string cookiename, string value)
         {
             CookieOptions options = new CookieOptions();
-            options.Expires = DateTime.Now.AddDays(1);
+            options.Expires = DateTime.Now.AddHours(1);
             options.IsEssential = true;
             options.Path = "/";
 
