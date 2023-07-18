@@ -1,0 +1,122 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+#index-banner {
+    background: #2F4EB4;
+    height: 53px;
+}
+
+#index-content p {
+    color: #5D686E;
+    font-family: roboto;
+    text-align: left;
+    font-size: 12px;
+}
+
+#index-body {
+    background: #F8F8F8;
+    height: 430px;
+}
+
+.borderStyle {
+    border-right: 1px solid #cdd1d4;
+    border-left: 1px solid #cdd1d4;
+    border-bottom: 1px solid #cdd1d4;
+}
+
+.labelDiv {
+    height: 35px;
+    background-color: white;
+}
+
+    .labelDiv p {
+        padding-left: 40px;
+        padding-top: 10px;
+        color: #2F4EB4;
+        font-size:18px;
+    }
+
+
+.fromWhereRow {
+    padding-top: 30px;
+}
+
+#fromWhere {
+    background: url(../images/fromWhere.png) no-repeat scroll 10px 15px;
+    padding-left: 40px;
+    width: 100%;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+.toWhereRow {
+    padding-top: 3px;
+}
+
+#toWhere {
+    background: url(../images/toWhere.png) no-repeat scroll 10px 15px;
+    width: 100%;
+    padding-left: 40px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+.datePickerRow {
+    padding-top: 50px;
+}
+
+#datePicker {
+    background: url(../images/datePicker.png) no-repeat scroll 10px 15px;
+    width: 100%;
+    padding-left: 40px;
+    height: 50px;
+    outline: none;
+    border: none;
+    background-color: white;
+}
+
+.dateBtn{
+    width:75px;
+    margin-left:20px;
+}
+
+.findTicketRow {
+    padding-top: 25px;
+}
+
+.btnChangeLocation {
+    margin-left: -70px;
+    margin-top: 47px;
+    border: 1px solid #cdd1d4;
+    border-radius: 50%;
+}
+
+
+#journey-banner {
+    background: #2F4EB4;
+    height: 73px;
+}
+
+#cardBody {
+    background: #F8F8F8;
+}

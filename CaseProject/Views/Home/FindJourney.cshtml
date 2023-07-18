@@ -1,0 +1,50 @@
+﻿@using CaseProject.Model.Bus;
+
+@model GetBusJourneysResponse
+
+@{
+    var locationInfo = Model.Data.Select(x => x.OriginLocation).FirstOrDefault() + " - " + Model.Data.Select(x => x.DestinationLocation).FirstOrDefault();
+}
+
+<div class="row">
+    <div class="col-sm-4">&nbsp;</div>
+    <div class="col-sm-4">
+        <div class="row">
+            <div id="journey-banner" class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <a href="~/" class="from-control btn text-white" style="margin-top:18px;"><i class="fa fa-chevron-left"></i></a>
+                    </div>
+                    <div class="col-sm-11">
+                        <div class="row"><p style="text-align:center; color:white;">@locationInfo</p></div>
+                        <div class="row"><p style="text-align:center; color:white; font-size:small">@Model.FormatDate</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="cardBody">
+                @foreach (var item in Model.Data)
+                {
+                    <div class="card mt-3">
+                        <div class="card-body" style="padding: 5px 5px !important;">
+                            <div class="row">
+                                <div class="col-8">
+                                    <p style="font-size:10px; color:#3640B1; font-weight:bold;">KALKIŞ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; VARIŞ</p>
+                                    @if (@item.Journey.Arrival.HasValue)
+                                    {
+                                        <p style="font-weight:bold; color:#3640B1;"> @item.Journey.Departure.Value.ToString("HH:mm") <i class="fa fa-long-arrow-right"></i> @item.Journey.Arrival.Value.ToString("HH:mm")</p>
+                                    }
+                                </div>
+                                <div class="col-4">
+                                    <small class="btn btn-danger" style="float:right; margin-top:5px;" type="button" name="name">@item.Journey.OriginalPrice TL</small>
+                                </div>
+                            </div>
+                            <p class="card-text" style="font-size:smaller; color:#083145">@item.Journey.Origin - @item.Journey.Destination </p>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">&nbsp;</div>
+</div> 
