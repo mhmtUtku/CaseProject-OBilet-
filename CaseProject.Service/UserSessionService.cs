@@ -8,14 +8,14 @@ namespace CaseProject.Service
     {
         private static string token = Constant.Token;
 
-        public UserSessionResponse GetUserSessionInfo(UserSessionRequest request)
+        public async Task<UserSessionResponse> GetUserSessionInfo(UserSessionRequest request)
         {
             var getSessionUrl = Constant.GetSessionUrl;
 
             Dictionary<string, string> headerParams = new Dictionary<string, string>();
             headerParams.Add("Authorization", token);
 
-            var apiResponse = HttpHelper.HttpPost<UserSessionResponse, UserSessionRequest>(getSessionUrl, request, headerParams);
+            var apiResponse = await HttpHelper.HttpPost<UserSessionResponse, UserSessionRequest>(getSessionUrl, request, headerParams);
             
             return apiResponse;
         }

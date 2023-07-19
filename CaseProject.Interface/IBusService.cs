@@ -4,8 +4,8 @@ namespace CaseProject.Interface
 {
     public interface IBusService
     {
-        GetBusLocationsResponse GetBusLocations(GetBusLocationsRequest request);
+        Task<GetBusLocationsResponse> GetBusLocations(GetBusLocationsRequest request);
 
-        GetBusJourneysResponse GetBusJourneys(GetBusJourneysRequest request);
+        Task<GetBusJourneysResponse> GetBusJourneys(GetBusJourneysRequest request);
     }
 }

@@ -4,6 +4,6 @@ namespace CaseProject.Interface
 {
     public interface IUserSessionService
     {
-        UserSessionResponse GetUserSessionInfo(UserSessionRequest request);
+        Task<UserSessionResponse> GetUserSessionInfo(UserSessionRequest request);
     }
 }

@@ -1,3 +1,4 @@
+using CaseProject.AppConfig;
 using CaseProject.Interface;
 using CaseProject.MiddleWare;
 using CaseProject.Service;
@@ -13,6 +14,8 @@ builder.Services.AddTransient<IBusService, BusService>();
 builder.Services.AddTransient<ICookieService, CookieService>();
 
 builder.Services.AddBrowserDetection();
+
+AppConfigurationService.Configure(builder.Configuration);
 
 var app = builder.Build();
 

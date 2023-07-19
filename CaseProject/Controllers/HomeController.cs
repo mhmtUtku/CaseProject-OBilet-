@@ -18,23 +18,23 @@ namespace CaseProject.Controllers
         public HomeController(IBusService busService, ICookieService cookieService)
         {
             _busService = busService;
-            _cookieService = cookieService;
+            _cookieService = cookieService;            
+        }
 
+        public IActionResult Index()
+        {
             #region GetCookie
 
             var cookieVal = _cookieService.CookieGet(UserInfo.Current.CookieName);
             findParams = JsonConvert.DeserializeObject<FindJourneyRequestDataModel>(cookieVal);
 
             #endregion
-        }
 
-        public IActionResult Index()
-        {
             return View(findParams);
         }
 
         [HttpPost]
-        public JsonResult GetBusLocations(string term)
+        public async Task<JsonResult> GetBusLocations(string term)
         {
             var request = new GetBusLocationsRequest
             {
@@ -42,12 +42,12 @@ namespace CaseProject.Controllers
                 DeviceSession = new DeviceSession { DeviceId = UserInfo.Current.DeviceId, SessionId = UserInfo.Current.SessionId }
             };
 
-            var busLocations = _busService.GetBusLocations(request);
+            var busLocations = await _busService.GetBusLocations(request);
 
             return Json(busLocations);
         }
 
-        public IActionResult FindJourney(int fromWhereId, int toWhereId, string date, string fromWhere, string toWhere)
+        public async Task<IActionResult> FindJourney(int fromWhereId, int toWhereId, string date, string fromWhere, string toWhere)
         {
             DateTime departureDate = DateTime.MinValue;
             if (!string.IsNullOrEmpty(date))
@@ -83,7 +83,7 @@ namespace CaseProject.Controllers
                 DeviceSession = new DeviceSession { DeviceId = UserInfo.Current.DeviceId, SessionId = UserInfo.Current.SessionId }
             };
 
-            var busJourneys = _busService.GetBusJourneys(request);
+            var busJourneys = await _busService.GetBusJourneys(request);
             if(busJourneys.Status == "Success")
             {
                 busJourneys.FormatDate = departureDate.ToString("dd MMMM dddd");

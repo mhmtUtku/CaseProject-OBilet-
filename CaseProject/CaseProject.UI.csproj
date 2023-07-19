@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CaseProject.AppConfig\CaseProject.AppConfig.csproj" />
     <ProjectReference Include="..\CaseProject.Helper\CaseProject.Helper.csproj" />
     <ProjectReference Include="..\CaseProject.Model\CaseProject.Model.csproj" />
     <ProjectReference Include="..\CaseProject.Service\CaseProject.Service.csproj" />

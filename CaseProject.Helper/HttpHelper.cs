@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CaseProject.AppConfig;
+using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -6,9 +7,9 @@ namespace CaseProject.Helper
 {
     public static class HttpHelper
     {
-        private static string _url = "https://v2-api.obilet.com/api/";
+        private static string _url = AppConfigurationService.GetApiMainUrl();
 
-        public static TResult HttpPost<TResult, TInput>(string url, TInput model, Dictionary<string, string> headerParams, int? timeOutSecond = null)
+        public static async Task<TResult> HttpPost<TResult, TInput>(string url, TInput model, Dictionary<string, string> headerParams, int? timeOutSecond = null)
         {
             try
             {
@@ -30,14 +31,14 @@ namespace CaseProject.Helper
 
                     var _postDataContent = new StringContent(_postDataJson, Encoding.UTF8, "application/json");
 
-                    var response = httpClient.PostAsync(_url + url, _postDataContent).Result;
+                    var response = await httpClient.PostAsync(_url + url, _postDataContent);
 
                     if (!response.IsSuccessStatusCode)
                     {
                         throw new Exception(response.ReasonPhrase);
                     }
 
-                    string jsonResult = response.Content.ReadAsStringAsync().Result;
+                    string jsonResult = await response.Content.ReadAsStringAsync();
 
                     var result = JsonConvert.DeserializeObject<TResult>(jsonResult);
 

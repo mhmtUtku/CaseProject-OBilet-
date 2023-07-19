@@ -41,7 +41,7 @@ namespace CaseProject.MiddleWare
                     Browser = new Browser { Name = browser.Name, Version = browser.Version }
                 };
 
-                var apiResponse = _userSessionService.GetUserSessionInfo(apiRequest);
+                var apiResponse = await _userSessionService.GetUserSessionInfo(apiRequest);
                 if(apiResponse.Status == "Success")
                 {
                     UserInfo.Current = new UserSetting()
