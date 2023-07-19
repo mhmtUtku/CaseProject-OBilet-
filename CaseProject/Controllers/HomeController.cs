@@ -13,8 +13,6 @@ namespace CaseProject.Controllers
         private readonly IBusService _busService;
         private readonly ICookieService _cookieService;
 
-        public FindJourneyRequestDataModel findParams;
-
         public HomeController(IBusService busService, ICookieService cookieService)
         {
             _busService = busService;
@@ -25,8 +23,7 @@ namespace CaseProject.Controllers
         {
             #region GetCookie
 
-            var cookieVal = _cookieService.CookieGet(UserInfo.Current.CookieName);
-            findParams = JsonConvert.DeserializeObject<FindJourneyRequestDataModel>(cookieVal);
+            var findParams = _cookieService.Get<FindJourneyRequestDataModel>(UserInfo.Current.CookieName);
 
             #endregion
 
@@ -100,7 +97,7 @@ namespace CaseProject.Controllers
             };
                 var cookieVal = JsonConvert.SerializeObject(cookieModel);
 
-                _cookieService.CookieCreate(UserInfo.Current.CookieName, cookieVal);
+                _cookieService.Create(UserInfo.Current.CookieName, cookieVal);
 
                 #endregion
 

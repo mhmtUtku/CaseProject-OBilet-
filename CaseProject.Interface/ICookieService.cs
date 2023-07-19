@@ -4,8 +4,8 @@ namespace CaseProject.Interface
 {
     public interface ICookieService
     {
-        void CookieCreate(string cookiename, string value);
-        string CookieGet(string cookiename);
-        void CookieDelete(string cookiename);
+        void Create(string cookiename, string value);
+        T Get<T>(string cookiename);
+        void Delete(string cookiename);
     }
 }
