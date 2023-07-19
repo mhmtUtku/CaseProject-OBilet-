@@ -2,6 +2,7 @@ using CaseProject.AppConfig;
 using CaseProject.Interface;
 using CaseProject.MiddleWare;
 using CaseProject.Service;
+using CaseProject.UI.MiddleWare;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +40,7 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.UseMiddleware<UserDetailsMiddleWare>();
+app.UseMiddleware<ExceptionMiddleWare>();
 
 app.Run();
 
